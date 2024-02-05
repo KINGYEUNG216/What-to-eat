@@ -1,0 +1,165 @@
+<!--Code adapted from https://getbootstrap.com/docs/5.3/examples/carousel/ -->
+{% extends 'base.html' %}
+
+{%block content %}
+
+<section>
+    <main>
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/homepage.jpg') }}" class="bd-placeholder-img" width="100%" height="70%"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Taste the World</h1>
+                            <p class="opacity-75">login to explore restaurants and book tables in advanced</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
+                                    aria-expanded="false" aria-controls="collapseWidthExample">
+                                    Log in Now
+                                </button>
+                            </p>
+                            <div style="min-height: 120px;">
+                                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                                    <div class="login-container">
+                                        <form action="/login" method="post">
+                                         <div class="input-group">
+                                                <label for="username">Username:</label>
+                                                <input type="text" id="username" name="username" required>
+                                         </div>
+                                         <div class="input-group">
+                                                <label for="password">Password:</label>
+                                                <input type="password" id="password" name="password" required>
+                                         </div>
+                                            <button type="submit" value="Login">Login</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/homepage2.jpg') }}" class="bd-placeholder-img" width="100%" height="70%"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Book in advanced</h1>
+                            <p>Some restauranta are very popular in peak time.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Book Now</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/homepage3.jpg') }}" class="bd-placeholder-img" width="100%" height="70%"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>New Launch</h1>
+                            <p>New brunch for you to try</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Taste it Now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="margin-between-modules"></div>
+        <!-- Marketing messaging and featurettes
+  ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{{ url_for('static', filename='images/marketing.jpg') }}" class="bd-placeholder-img rounded-circle" width="140"
+                        height="140" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <h2 class="fw-normal">Vegetarian</h2>
+                    <p>These restaurants offer delicious vegetarian food.</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img src="{{ url_for('static', filename='images/marketing2.jpg') }}" class="bd-placeholder-img rounded-circle"
+                        width="140" height="140" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <h2 class="fw-normal">Review</h2>
+                    <p>Thousands of restaurant reviews and photos from consumers.</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img src="{{ url_for('static', filename='images/marketing3.jpg') }}" class="bd-placeholder-img rounded-circle"
+                        width="140" height="140" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <h2 class="fw-normal">Map</h2>
+                    <p>You can easily reach any restaurant you like by following the navigation</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Top 1 Popular: <span
+                            class="caption-color">Cafe Library</span></h2>
+                    <p class="lead">A variety of hot food services are available from Monday to Friday, the most popular of which is fish and chips on
+                    Friday!</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ url_for('static',filename='images/top1.jpg') }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Top 2 Popular: <span
+                            class="caption-color">Fusion Sports Bar</span></h2>
+                    <p class="lead">The largest restaurant on campus and full of flavour and a feast for the eyes.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="{{ url_for('static',filename='images/top2.jpg') }}"
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
+                        aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Top 3 Popular: <span
+                            class="caption-colory">Pret</span></h2>
+                    <p class="lead">A lovely coffee shop on campus.You can pick up fresh sandwiches, burritos and cakes whenever you are hungry.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ url_for('static',filename='images/top3.jpg') }}"
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
+                        aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+            </div>
+        </div>   
+    </main>
+</section>
+{% endblock %}

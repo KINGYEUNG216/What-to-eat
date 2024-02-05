@@ -1,0 +1,203 @@
+<!--Code adapted from https://getbootstrap.com/docs/5.3/examples/blog/ and ChatGPT -->
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        /*Code generated using ChatGPT, this part  is used to open the small image in the web page to enlarge the larger image browsing function*/
+        /* Small picture of the initial state */
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+    
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+        }
+    
+        /* Click and expand to a larger image */
+        .expanded {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    
+        .expanded img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<section>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded bg-body-secondary overflow-hidden">
+            <img src="{{ url_for('static',filename='images/benugo.jpg') }}" alt="Benugo Background">
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <div class="border rounded overflow-hidden shadow-sm h-md-250 position-relative">
+                            <div class="p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Location</strong>
+                                <p>Warwick Arts Centre, University of Warwick, Coventry, CV4 7AL</p>
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Price Range</strong>
+                                <p>￡10-20</p>
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Contact Number</strong>
+                                <p>+44 1926956160</p>
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Price Range</strong>
+                                <p>9:00-20:00 Monday-Sunday</p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="col-md-6">
+                        <div class="border rounded overflow-hidden shadow-sm h-md-250 position-relative">
+                            <div class="p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Special Diet</strong>
+                                <p>Suitable for vegetarians, serving gluten-free cuisine</p>
+                                <strong class="d-inline-block mb-2 text-success-emphasis">Facility</strong>
+                                <p>Baby change</p>
+                                <p>Disabled access</p>
+                                <p>Disabled toilet</p>
+                                <p>Free wi-fi access</p>
+                                <p>Outdoor sitting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Gallery</strong>
+                        <h3 class="mb-0">About Us</h3>
+                        <p class="card-text mb-auto">Here are pictures of the environment and dishes of our restaurant</p>
+                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            View All
+                            <svg class="bi">
+                                <use xlink:href="#chevron-right" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="{{ url_for('static',filename='images/menu.jpg') }}" alt="Benugo Background" width="200" height="250" object-fit="cover"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-8">
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Menu</h2>
+                    <p class="blog-post-meta">Updated on January 1, 2024 by <a href="#">Chris</a></p>
+                    <p>Please click picture to show the whole menu.</p>
+                    <div class="thumbnail" onclick="expandImage()">
+                        <img src="{{ url_for('static',filename='images/menu1.jpg') }}" alt="Menu">
+                    </div>
+                    
+                    <!-- Large picture of the container -->
+                    <div class="expanded" onclick="collapseImage()">
+                        <img src="{{ url_for('static',filename='images/menu1.jpg') }}" alt="Expanded Menu">
+                    </div>
+
+                    
+                    <script>
+                        // JavaScript functions are used to switch the display state of small and large graphs
+                        function expandImage() {
+                            document.querySelector('.thumbnail').style.display = 'none';
+                            document.querySelector('.expanded').style.display = 'block';
+                        }
+
+                        function collapseImage() {
+                            document.querySelector('.thumbnail').style.display = 'block';
+                            document.querySelector('.expanded').style.display = 'none';
+                        }
+                    </script>
+
+        
+
+                </article>
+                <hr>
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Review</h2>
+                    <form>
+                        <textarea name="comment" rows="4" cols="50" placeholder="We are listening to you" required></textarea>
+                        <br>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <hr>
+                    <p class="blog-post-meta">January 1, 2024 by <a href="#">Mark</a></p>
+                    <p>"I had a wonderful birthday party here! Highly recommended to you guys"</p>
+                    <hr>
+                    <p class="blog-post-meta">December 12, 2023 by <a href="#">Jordan</a></p>
+                    <p>"A little expensive,but delicious food worth it!"</p>
+                    <hr>
+                    
+                </article>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-body-tertiary rounded">
+                        <h4 class="fst-italic" style="color:#552d62">Coupon</h4>
+                        <p class="mb-0">Get a 10% coupon if you dine in and post a location-based gourmet on your instagram!</p>
+                    </div>
+
+                    <div>
+                        <h4 class="fst-italic">Recent posts</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                    href="#">
+                                    <img src="{{ url_for('static',filename='images/post1.jpg') }}" width="100%" height="96"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="col-lg-8">
+                                        <h6 class="mb-0">Good Service</h6>
+                                        <small class="text-body-secondary">January 15, 2023</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                    href="#">
+                                    <img src="{{ url_for('static',filename='images/post2.jpg') }}" width="100%" height="96"
+                                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="col-lg-8">
+                                        <h6 class="mb-0">Variety Menu</h6>
+                                        <small class="text-body-secondary">January 14, 2023</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                    href="#">
+                                    <img src="{{ url_for('static',filename='images/post3.jpg') }}" width="100%" height="96"
+                                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="col-lg-8">
+                                        <h6 class="mb-0">Vegetarian friendly</h6>
+                                        <small class="text-body-secondary">January 13, 2023</small>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</section>
+{% endblock %}
